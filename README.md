@@ -12,6 +12,7 @@ In **CartPole_simple_comm_1BS_manyUEs_contention_free_github.ipynb** and **Mujoc
 When the UE (either the CartPole or the MuJoCo gym environment) has SDUs to send, it sends a service request ('SR') to the BS and waits to receive a service grant ('SG'). If the BS receives multiple 'SR' at the same time point, it randomly select one UE to which to transmit the 'SG'. Upon reception of the 'SG', the selected UE sends its state to the BS and waits for an action from the BS. If the SDU is received without errors, then the BS samples an action from the uniform distribution and sends it to the UE. If it is received with error, with probability given by pTBLER, then the BS sends a non-acknowledgemet message ('NACK') to the UE. Upon reception of 'NACK', the UE retransmits its state. When a UE receives an action from the BS, it executes the received action and, at the following time point, sends a new 'SR' message to the BS. Instead of the action sampled from the uniform distribution, the user would sample the action from a policy learned a priori. <br>
 
 # Expected outputs
+These notebooks provide a parallel communication framework between 1 BS and several UEs (CartPole or MuJoCo robots). When running these notebooks, in log files, the user can track the signalling messages exhanged between the UEs and the BS and can visualized the data received by the BS. While the communication is running, these two functionalities can be monitored for each time step. As a result, the user can track how often and which UEs access the channel and how much data the BS is receiving, as well as the type of data received.  
 
 # Getting started
 
@@ -20,10 +21,11 @@ When the UE (either the CartPole or the MuJoCo gym environment) has SDUs to send
 # Usage
 
 # How to contribute
-
+1. **Implementing new problems:** extending the notebooks by changing the communiccation messages and the network topology
+2. **Implementing new solutions:** propose new communication protocols for the above problems 
 # References
-1. [Gynmasium environment] (https://gymnasium.farama.org/)
-2. [How to make your custom Gymnasium environment] (https://gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation/)
+1. [Gynmasium environment] (https://gymnasium.farama.org)
+2. [How to make your custom Gymnasium environment] (https://gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation)
 # License
 This project is licensed unde the MIT license - see the License file on the right 
 
