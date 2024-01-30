@@ -19,4 +19,13 @@ When the UE (either the CartPole or the MuJoCo gym environment) has SDUs to send
 
 # Usage
 
+# How to contribute
+
+# References
+1. [Gynmasium environment] (https://gymnasium.farama.org/)
+2. [How to make your custom Gymnasium environment] (https://gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation/)
+# License
+This project is licensed unde the MIT license - see the License file on the right 
+
+
 
