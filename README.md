@@ -15,7 +15,8 @@ When the UE (either the CartPole or the MuJoCo gym environment) has SDUs to send
 These notebooks provide a parallel communication framework between 1 BS and several UEs (CartPole or MuJoCo robots). When running these notebooks, in log files, the user can track the signalling messages exhanged between the UEs and the BS and can visualized the data received by the BS. While the communication is running, these two functionalities can be monitored for each time step. As a result, the user can track how often and which UEs access the channel and how much data the BS is receiving, as well as the type of data received.  
 
 # Getting started
-
+1. The user can directly download the notebook files from the above list.
+2. In order to open, run and edit the notebook in a web browser, the user may follow the instructions provided at this page [How to run Jupyter notebooks] (https://docs.jupyter.org/en/latest/running.html).
 # Baselines
 The contention-free communication protocol acts as the baseline for the above scenarios. 
 # Usage
