@@ -17,15 +17,17 @@ These notebooks provide a parallel communication framework between 1 BS and seve
 # Getting started
 
 # Baselines
-
+The contention-free communication protocol acts as the baseline for the above scenarios. 
 # Usage
+The notebooks contain the source code for the above scenarios. The source code can be modified directly by openning, running and editing the notebooks in a web application.
 
 # How to contribute
-1. **Implementing new problems:** extending the notebooks by changing the communiccation messages and the network topology
+1. **Implementing new problems:** extending the notebooks by changing the type of the communication messages and the network topology
 2. **Implementing new solutions:** propose new communication protocols for the above problems 
 # References
 1. [Gynmasium environment] (https://gymnasium.farama.org)
 2. [How to make your custom Gymnasium environment] (https://gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation)
+3. [How to run Jupyter notebooks] (https://docs.jupyter.org/en/latest/running.html)
 # License
 This project is licensed unde the MIT license - see the License file on the right 
 
