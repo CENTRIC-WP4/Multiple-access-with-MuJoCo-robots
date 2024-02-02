@@ -18,9 +18,10 @@ These notebooks provide a parallel communication framework between 1 BS and seve
 1. The user can directly download the notebook files from the above list.
 2. In order to open, run and edit the notebook in a web browser, the user may follow the instructions provided at this page [How to run Jupyter notebooks] (https://docs.jupyter.org/en/latest/running.html).
 # Baselines
-The contention-free communication protocol acts as the baseline for the above scenarios. 
+The contention-free communication protocol with random scheduling acts as the baseline for the above scenarios. 
 # Usage
 The notebooks contain the source code for the above scenarios. The source code can be modified directly by openning, running and editing the notebooks in a web application.
+[https://gymnasium.farama.org]
 
 # How to contribute
 1. **Implementing new problems:** extending the notebooks by changing the type of the communication messages and the network topology
@@ -29,6 +30,8 @@ The notebooks contain the source code for the above scenarios. The source code c
 1. [Gynmasium environment] (https://gymnasium.farama.org)
 2. [How to make your custom Gymnasium environment] (https://gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation)
 3. [How to run Jupyter notebooks] (https://docs.jupyter.org/en/latest/running.html)
+4. [Markdown language summarized] (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
 # License
 This project is licensed unde the MIT license - see the License file on the right 
 
