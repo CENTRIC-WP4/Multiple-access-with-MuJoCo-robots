@@ -2,7 +2,7 @@
 Communication environments between 1 BS and several gymnasium entities. <br>
 Author: Septimia Sarbu, ICON, CWC, University of Oulu <br>
 Created on 16.11.2023 <br>
-The notebooks implement basic communication environments between one base station (BS) and one or several user equipments (UEs). The UEs are instantiated as gymnasium environments (CartPole and MuJoCo) https://gymnasium.farama.org/ . To simulate real-time parallel communication, the operation of the BS and UEs is implemented using the Multiprocessing feature of python. <br>
+The notebooks implement basic communication environments between one base station (BS) and one or several user equipments (UEs). The UEs are instantiated as gymnasium environments (CartPole and MuJoCo) [Gymnasium](https://gymnasium.farama.org/) . To simulate real-time parallel communication, the operation of the BS and UEs is implemented using the Multiprocessing feature of python. <br>
 
 # Overview
 In **CartPole_simple_comm_1BS_1UE_github.ipynb** and **Mujoco_simple_comm_1BS_1UE_github.ipynb**: the communication takes place between 1 BS and 1 UE. At one time point, the UE (either the CartPole or the MuJoCo gym environment) sends its state to the BS, at the next time point the BS samples an action from the uniform distribution and sends it to the UE. Then, the UE executes the received actions and, at the following time point sends the new state to the BS. Perfect reception is assumed at the BS. A UE state vector is counted as an SDU (service data unit). The communication round ends when a given number of SDUs have been sent and received. Instead of the action sampled from the uniform distribution, the user would sample the action from a policy learned a priori. <br>
@@ -15,13 +15,15 @@ When the UE (either the CartPole or the MuJoCo gym environment) has SDUs to send
 These notebooks provide a parallel communication framework between 1 BS and several UEs (CartPole or MuJoCo robots). When running these notebooks, in log files, the user can track the signalling messages exhanged between the UEs and the BS and can visualized the data received by the BS. While the communication is running, these two functionalities can be monitored for each time step. As a result, the user can track how often and which UEs access the channel and how much data the BS is receiving, as well as the type of data received.  
 
 # Getting started
+These notebooks provided in this repository have been tested on a remote server running Red Hat Enterprise Linux release 8.9, python 3.7.13, GCC 7.5.0 and displayed for editing in a web browser under Windows 10 Enterprise.
 1. The user can directly download the notebook files from the above list.
-2. In order to open, run and edit the notebook in a web browser, the user may follow the instructions provided at this page [How to run Jupyter notebooks] (https://docs.jupyter.org/en/latest/running.html).
+2. In order to open, run and edit the notebook in a web browser, the user may follow the following instructions:
+3. 
 # Baselines
-The contention-free communication protocol with random scheduling acts as the baseline for the above scenarios. 
+The contention-free communication protocol with random scheduling acts as the baseline for the above scenarios. The user may modify the provided source code, to replace the baseline and add their own solution to the protocol emergence challenge.
 
 # Usage
-The notebooks contain the source code for the above scenarios. The source code can be modified directly by openning, running and editing the notebooks in a web application. To ensure real-time synchronization, the communication network of 1 BS and several UEs (CartPole or MuJoCo robots) is simulated using the Multiprocessing feature of python. The entry point is the main() function illustrated below. The BS and UEs exchange messages and data via the Queue data structure.
+The notebooks contain the source code for the above scenarios. The source code can be modified directly by openning, running and editing the notebooks in a web application. To ensure real-time synchronization, the communication network of 1 BS and several UEs (CartPole or MuJoCo robots) is simulated using the Multiprocessing feature of python. The entry point is the main() function illustrated below. The BS and UEs exchange messages and data via the Queue data structure. The BS and the UEs represent concurrent processes, which, once they are launched, will communicate through the contention-free protocol with random scheduling, implemented in the functions runUE() and runBS(). The user may modify these function to replace the baseline and add their own solution to the protocol emergence challenge.
 ```python
 # entry point
 if __name__ == '__main__':
