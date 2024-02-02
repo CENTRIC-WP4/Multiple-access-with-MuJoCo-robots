@@ -19,18 +19,53 @@ These notebooks provide a parallel communication framework between 1 BS and seve
 2. In order to open, run and edit the notebook in a web browser, the user may follow the instructions provided at this page [How to run Jupyter notebooks] (https://docs.jupyter.org/en/latest/running.html).
 # Baselines
 The contention-free communication protocol with random scheduling acts as the baseline for the above scenarios. 
+
 # Usage
-The notebooks contain the source code for the above scenarios. The source code can be modified directly by openning, running and editing the notebooks in a web application.
-[Gynmasium] (https://gymnasium.farama.org)
+The notebooks contain the source code for the above scenarios. The source code can be modified directly by openning, running and editing the notebooks in a web application. To ensure real-time synchronization, the communication network of 1 BS and several UEs (CartPole or MuJoCo robots) is simulated using the Multiprocessing feature of python. The entry point is the main() function illustrated below. The BS and UEs exchange messages and data via the Queue data structure.
+```python
+# entry point
+if __name__ == '__main__':
+        
+    # create the UE and the BS
+    tSDUs = 20 + 1 # SDUs to transmit from each UE to BS, then the episode ends
+    tEND = 20 + 1
+    
+    nUEs = 2
+    
+    # create the shared queues
+    UCM = [Queue() for i in range(nUEs)]
+    DCM = [Queue() for i in range(nUEs)]
+    
+    ch = [Queue() for i in range(nUEs)]
+
+    # start the UE
+    UE_processes = [Process(target=runUE, args=(UCM,DCM,ch,tSDUs,UEModel,i,)) for i in range(nUEs)]
+    for UE_process in UE_processes:
+        UE_process.start()
+    
+    # start the BS
+    seedBS = 230
+    BS_process = Process(target=runBS, args=(UCM,DCM,ch,BSModel,nUEs,tEND,seedBS,))
+    BS_process.start()
+        
+    BS_process.join()
+    
+    # wait for all processes to finish
+    for UE_process in UE_processes:
+        UE_process.join()
+
+    print("All processes have terminated successfully")
+```
 
 # How to contribute
 1. **Implementing new problems:** extending the notebooks by changing the type of the communication messages and the network topology
 2. **Implementing new solutions:** propose new communication protocols for the above problems 
 # References
-1. [Gynmasium environment] (https://gymnasium.farama.org)
-2. [How to make your custom Gymnasium environment] (https://gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation)
-3. [How to run Jupyter notebooks] (https://docs.jupyter.org/en/latest/running.html)
-4. [Markdown language summarized] (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+1. [Gynmasium environment](https://gymnasium.farama.org)
+2. [How to make your custom Gymnasium environment](https://gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation)
+3. [Python Multiprocessing tutorials](https://superfastpython.com/learning-paths/)
+4. [How to run Jupyter notebooks](https://docs.jupyter.org/en/latest/running.html)
+5. [Markdown language summarized](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 # License
 This project is licensed unde the MIT license - see the License file on the right 
