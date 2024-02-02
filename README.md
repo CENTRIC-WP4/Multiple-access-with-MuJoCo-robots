@@ -21,7 +21,7 @@ These notebooks provide a parallel communication framework between 1 BS and seve
 The contention-free communication protocol with random scheduling acts as the baseline for the above scenarios. 
 # Usage
 The notebooks contain the source code for the above scenarios. The source code can be modified directly by openning, running and editing the notebooks in a web application.
-[https://gymnasium.farama.org]
+[Gynmasium] (https://gymnasium.farama.org)
 
 # How to contribute
 1. **Implementing new problems:** extending the notebooks by changing the type of the communication messages and the network topology
